@@ -2,6 +2,7 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  * @flow
+ * use icons from here http://ionicframework.com/docs/v2/ionicons/
  */
 
 import React, { Component } from 'react';
@@ -9,24 +10,102 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
-
+import { Container, Content, Card, CardItem, Thumbnail, logo, Header, Title,  Button, Left, Right, Body, Icon } from 'native-base';
 export default class UrlVaultReactNative extends Component {
   render() {
+    let pic = {
+      uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
+    };
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <Container>
+        <Header>
+          <Left>
+            <Button transparent>
+              <Icon name='menu' />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Url-Vault</Title>
+          </Body>
+          <Right />
+        </Header>
+        <Content>
+          <Card >
+            <CardItem>
+              <Left>
+                <Thumbnail source={pic} />
+                <Body>
+                  <Text>http://www.cnn.com</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem cardBody>
+              <Image style={{width: 350, height: 150}} source={pic}/>
+            </CardItem>
+            <CardItem content>
+              <Text>Wait a minute. Wait a minute, Doc. Uhhh...
+                Are you telling me that you built a time machine... out of a DeLorean?!
+                Whoa. This is heavy.</Text>
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Button transparent>
+                  <Icon active name="play" />
+                </Button>
+              </Left>
+              <Body>
+                <Button transparent>
+                  <Icon active name="md-create" />
+                </Button>
+              </Body>
+              <Right>
+                <Button transparent>
+                  <Icon active name="md-trash" />
+                </Button>
+              </Right>
+            </CardItem>
+          </Card>
+          <Card >
+            <CardItem>
+              <Left>
+                <Thumbnail source={pic} />
+                <Body>
+                  <Text>NativeBase</Text>
+                  <Text note>GeekyAnts</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem cardBody>
+              <Image style={{width: 350, height: 150}} source={pic}/>
+            </CardItem>
+            <CardItem content>
+              <Text>Wait a minute. Wait a minute, Doc. Uhhh...
+                Are you telling me that you built a time machine... out of a DeLorean?!
+                Whoa. This is heavy.</Text>
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Button transparent>
+                  <Icon active name="thumbs-up" />
+                  <Text>12 Likes</Text>
+                </Button>
+              </Left>
+              <Body>
+                <Button transparent>
+                  <Icon active name="chatbubbles" />
+                  <Text>4 Comments</Text>
+                </Button>
+              </Body>
+              <Right>
+                <Text>11h ago</Text>
+              </Right>
+            </CardItem>
+          </Card>
+        </Content>
+      </Container>
     );
   }
 }
