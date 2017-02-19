@@ -48,21 +48,27 @@ export default class UrlVaultReactNative extends Component {
             <CardItem content>
               <Text>Wait a minute. Wait a minute, Doc. Uhhh...
                 Are you telling me that you built a time machine... out of a DeLorean?!
+                Are you telling me that you built a time machine... out of a DeLorean?!
+                Are you telling me that you built a time machine... out of a DeLorean?!
+                Are you telling me that you built a time machine... out of a DeLorean?!
+                Are you telling me that you built a time machine... out of a DeLorean?!
+                Are you telling me that you built a time machine... out of a DeLorean?!
+                Are you telling me that you built a time machine... out of a DeLorean?!
                 Whoa. This is heavy.</Text>
             </CardItem>
             <CardItem>
               <Left>
-                <Button transparent>
+                <Button large transparent>
                   <Icon active name="play" />
                 </Button>
               </Left>
               <Body>
-                <Button transparent>
+                <Button large transparent>
                   <Icon active name="md-create" />
                 </Button>
               </Body>
               <Right>
-                <Button transparent>
+                <Button large transparent>
                   <Icon active name="md-trash" />
                 </Button>
               </Right>
