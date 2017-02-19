@@ -14,6 +14,7 @@ import {
   Image
 } from 'react-native';
 import { Container, Content, Card, CardItem, Thumbnail, logo, Header, Title,  Button, Left, Right, Body, Icon } from 'native-base';
+import LinkCard from './components/LinkCard.js';
 export default class UrlVaultReactNative extends Component {
   render() {
     let pic = {
@@ -33,83 +34,11 @@ export default class UrlVaultReactNative extends Component {
           <Right />
         </Header>
         <Content>
-          <Card >
-            <CardItem>
-              <Left>
-                <Thumbnail source={pic} />
-                <Body>
-                  <Text>http://www.cnn.com</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem cardBody>
-              <Image style={{width: 350, height: 150}} source={pic}/>
-            </CardItem>
-            <CardItem content>
-              <Text>Wait a minute. Wait a minute, Doc. Uhhh...
-                Are you telling me that you built a time machine... out of a DeLorean?!
-                Are you telling me that you built a time machine... out of a DeLorean?!
-                Are you telling me that you built a time machine... out of a DeLorean?!
-                Are you telling me that you built a time machine... out of a DeLorean?!
-                Are you telling me that you built a time machine... out of a DeLorean?!
-                Are you telling me that you built a time machine... out of a DeLorean?!
-                Are you telling me that you built a time machine... out of a DeLorean?!
-                Whoa. This is heavy.</Text>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Button large transparent>
-                  <Icon active name="play" />
-                </Button>
-              </Left>
-              <Body>
-                <Button large transparent>
-                  <Icon active name="md-create" />
-                </Button>
-              </Body>
-              <Right>
-                <Button large transparent>
-                  <Icon active name="md-trash" />
-                </Button>
-              </Right>
-            </CardItem>
-          </Card>
-          <Card >
-            <CardItem>
-              <Left>
-                <Thumbnail source={pic} />
-                <Body>
-                  <Text>NativeBase</Text>
-                  <Text note>GeekyAnts</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem cardBody>
-              <Image style={{width: 350, height: 150}} source={pic}/>
-            </CardItem>
-            <CardItem content>
-              <Text>Wait a minute. Wait a minute, Doc. Uhhh...
-                Are you telling me that you built a time machine... out of a DeLorean?!
-                Whoa. This is heavy.</Text>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Button transparent>
-                  <Icon active name="thumbs-up" />
-                  <Text>12 Likes</Text>
-                </Button>
-              </Left>
-              <Body>
-                <Button transparent>
-                  <Icon active name="chatbubbles" />
-                  <Text>4 Comments</Text>
-                </Button>
-              </Body>
-              <Right>
-                <Text>11h ago</Text>
-              </Right>
-            </CardItem>
-          </Card>
+          <LinkCard/>
+          <LinkCard/>
+          <LinkCard/>
+          <LinkCard/>
+          <LinkCard/>
         </Content>
       </Container>
     );
