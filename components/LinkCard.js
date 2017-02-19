@@ -30,19 +30,19 @@ export default class LinkCard  extends Component {
           Are you telling me that you built a time machine... out of a DeLorean?!
           Whoa. This is heavy.</Text>
       </CardItem>
-      <CardItem>
+      <CardItem header>
         <Left>
-          <Button large transparent>
+          <Button transparent>
             <Icon active name="play" />
           </Button>
         </Left>
-        <Body>
-          <Button large transparent>
+        <Body style={{alignItems: 'stretch'}}>
+          <Button transparent>
             <Icon active name="md-create" />
           </Button>
         </Body>
         <Right>
-          <Button large transparent>
+          <Button transparent>
             <Icon active name="md-trash" />
           </Button>
         </Right>
