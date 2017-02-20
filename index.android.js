@@ -15,11 +15,22 @@ import {
 } from 'react-native';
 import { Container, Content, Card, CardItem, Thumbnail, logo, Header, Title,  Button, Left, Right, Body, Icon } from 'native-base';
 import LinkCard from './components/LinkCard.js';
+import DataProvider from './service/DataProvider.js';
+
 export default class UrlVaultReactNative extends Component {
-  render() {
-    let pic = {
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
+  constructor(props) {
+    super(props); 
+    let urlData = DataProvider.getUrlData();
+    let cards = [ ];
+    urlData.urls.forEach((item) => {
+      cards.push(<LinkCard url={item.url} detail={item.content} image={item.image} key={item.url} />)
+    });
+    this.state = {
+     cards: cards
     };
+  }
+
+  render() {
     return (
       <Container>
         <Header>
@@ -34,11 +45,7 @@ export default class UrlVaultReactNative extends Component {
           <Right />
         </Header>
         <Content>
-          <LinkCard/>
-          <LinkCard/>
-          <LinkCard/>
-          <LinkCard/>
-          <LinkCard/>
+          {this.state.cards}
         </Content>
       </Container>
     );
