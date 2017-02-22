@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { Container, Content, Card, CardItem, Thumbnail, logo, Header, Title,  Button, Left, Right, Body, Icon } from 'native-base';
 import { Text, Image } from 'react-native';
 
-
-function marty() {
-  return "this data can come from another class which is talking to the internet";
-}
 export default class LinkCard  extends Component {
   constructor(props){
     super();

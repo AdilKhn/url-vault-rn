@@ -13,8 +13,9 @@ import {
   View,
   Image
 } from 'react-native';
-import { Container, Content, Card, CardItem, Thumbnail, logo, Header, Title,  Button, Left, Right, Body, Icon } from 'native-base';
+import { Container,Form, Item, Input, Label, Content, Card, CardItem, Thumbnail, logo, Header, Title,  Button, Left, Right, Body, Icon } from 'native-base';
 import LinkCard from './components/LinkCard.js';
+import UrlSearch from './components/UrlSearch.js';
 import DataProvider from './service/DataProvider.js';
 
 export default class UrlVaultReactNative extends Component {
@@ -26,7 +27,7 @@ export default class UrlVaultReactNative extends Component {
       cards.push(<LinkCard url={item.url} detail={item.content} image={item.image} key={item.url} />)
     });
     this.state = {
-     cards: cards
+      cards: cards
     };
   }
 
@@ -44,6 +45,7 @@ export default class UrlVaultReactNative extends Component {
           </Body>
           <Right />
         </Header>
+        <UrlSearch/>
         <Content>
           {this.state.cards}
         </Content>
