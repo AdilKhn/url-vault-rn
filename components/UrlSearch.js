@@ -5,6 +5,14 @@ import { View, Text, Image } from 'react-native';
 export default class UrlSearch  extends Component {
   constructor(props){
     super();
+    this.state = {
+      searchText: 'Enter text to search'  
+    }
+    this.editHandler = this.editHandler.bind(this);
+  }
+
+  editHandler(event) {
+    console.log('Edit handler:' + this.state.searchText);
   }
   render() {
     return ( 
@@ -12,7 +20,10 @@ export default class UrlSearch  extends Component {
         <Form>
           <Item floatingLabel>
             <Label> Search </Label>
-            <Input/>
+            <Input 
+              onSubmitEditing={this.editHandler}
+              onChangeText={(input) => this.setState({searchText: input})}
+            />
           </Item>
         </Form>
       </View>
