@@ -6,8 +6,10 @@ export default class UrlSearch  extends Component {
   constructor(props){
     super();
     this.state = {
-      searchText: 'Enter text to search'  
+      searchText: 'Enter text to search',
+      cb: props.myCb
     }
+    this.cb = props.myCb;
     this.editHandler = this.editHandler.bind(this);
   }
 
@@ -21,7 +23,7 @@ export default class UrlSearch  extends Component {
           <Item floatingLabel>
             <Label> Search </Label>
             <Input 
-              onSubmitEditing={this.editHandler}
+              onSubmitEditing={this.cb}
               onChangeText={(input) => this.setState({searchText: input})}
             />
           </Item>
