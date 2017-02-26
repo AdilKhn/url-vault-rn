@@ -1,20 +1,22 @@
 import React, { Component } from 'react'; 
 import { Form, Item, Label, Input } from 'native-base';
 import { View, Text, Image } from 'react-native';
-
+import StateEngine from '../middleware/StateEngine.js';
 export default class UrlSearch  extends Component {
   constructor(props){
-    super();
+    super(props);
     this.state = {
       searchText: 'Enter text to search',
-      cb: props.myCb
     }
-    this.cb = props.myCb;
+    this.cb = this.props.cb.bind(this);
+    this.engine = this.props.stateEngine;
     this.editHandler = this.editHandler.bind(this);
   }
 
   editHandler(event) {
     console.log('Edit handler:' + this.state.searchText);
+    this.engine.setSearchText(this.state.searchText);
+    this.cb();
   }
   render() {
     return ( 
@@ -23,7 +25,7 @@ export default class UrlSearch  extends Component {
           <Item floatingLabel>
             <Label> Search </Label>
             <Input 
-              onSubmitEditing={this.cb}
+              onSubmitEditing={this.editHandler}
               onChangeText={(input) => this.setState({searchText: input})}
             />
           </Item>
