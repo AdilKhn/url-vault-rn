@@ -29,6 +29,11 @@ export default class UrlVaultReactNative extends Component {
     this.state = {
       cards: cards
     };
+    this.myCb = this.myCb.bind(this);
+  }
+
+  myCb() {
+    console.log('it worked!');
   }
 
   render() {
@@ -45,7 +50,7 @@ export default class UrlVaultReactNative extends Component {
           </Body>
           <Right />
         </Header>
-        <UrlSearch/>
+        <UrlSearch cb={this.myCb}/>
         <Content>
           {this.state.cards}
         </Content>
