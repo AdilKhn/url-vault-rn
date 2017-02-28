@@ -1,14 +1,17 @@
 //import React, { Component } from 'react'; 
-export default class StateEngine {
 
-  constructor(){
-    this.globalState = {}; 
-  }
+let uvGlobal = {};
 
-  getSearchText(){
-     return this.globalState.searchText; 
-  }
-  setSearchText(text){
-    this.globalState.searchText = text; 
-  }
+function setUvState(key, value) {
+  uvGlobal[key] = value;
+  console.log('hash is:' );
+  console.log(uvGlobal);
+  console.log('----------' );
 }
+
+function getUvState(key){
+  return uvGlobal[key];
+}
+
+
+export { setUvState, getUvState};

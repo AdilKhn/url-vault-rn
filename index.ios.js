@@ -17,7 +17,7 @@ import { Container,Form, Item, Input, Label, Content, Card, CardItem, Thumbnail,
 import LinkCard from './components/LinkCard.js';
 import UrlSearch from './components/UrlSearch.js';
 import DataProvider from './service/DataProvider.js';
-import StateEngine from './middleware/StateEngine.js';
+import {setUvState, getUvState} from './middleware/StateEngine.js';
 export default class UrlVaultReactNative extends Component {
   constructor(props) {
     super(props); 
@@ -30,11 +30,11 @@ export default class UrlVaultReactNative extends Component {
       cards: cards
     };
     this.myCb = this.myCb.bind(this);
-    this.engine = new StateEngine();
+    setUvState('searchFunction', this.myCb);
   }
 
   myCb(event) {
-    console.log('it worked!:' + this.engine.getSearchText());
+    console.log('it worked!:' + getUvState('searchInput'));
   }
 
   render() {
@@ -51,7 +51,7 @@ export default class UrlVaultReactNative extends Component {
           </Body>
           <Right />
         </Header>
-        <UrlSearch cb={this.myCb} stateEngine={this.engine}/>
+        <UrlSearch  />
         <Content>
           {this.state.cards}
         </Content>
