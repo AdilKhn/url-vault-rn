@@ -12,12 +12,9 @@ export default class UrlSearch  extends Component {
   }
 
   editHandler(event) {
-    console.log('Edit handler:' + this.state.searchText);
     setUvState('searchInput', this.state.searchText);
-    console.log('----Function----');
-     getUvState('searchFunction')();
-    console.log('--------');
-    
+    getUvState('searchFunction')();
+
   }
   render() {
     return ( 
