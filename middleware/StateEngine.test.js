@@ -6,7 +6,14 @@ test('functions are found', () => {
 });
 
 
-test('keys can be added' , () => {
+test('keys can be set and get' , () => {
   setUvState('foo', 'bar');
   expect(getUvState('foo')).toBe('bar');
+});
+
+
+test('functions can be set and run', () => {
+  let mockFunc = () => {return 'foo'};
+  setUvState('func', mockFunc);
+  expect(getUvState('func')()).toBe('foo');
 });
