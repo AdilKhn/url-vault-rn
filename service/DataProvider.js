@@ -1,7 +1,7 @@
 export default class DataProvider {
 
   static getUrlData(val) {
-    let count = 1000;
+    let count = 10;
 
     let data = {
       urls: [

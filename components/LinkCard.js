@@ -4,7 +4,8 @@ import { Text, Image } from 'react-native';
 
 export default class LinkCard  extends Component {
   constructor(props){
-    super();
+    super(props);
+    console.log("PROPS");
     this.state = {
       url: props.url,
       detail: props.detail,

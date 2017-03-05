@@ -58,43 +58,7 @@ export default class UrlVaultReactNative extends Component {
         <UrlSearch  />
         <Content>
           <List dataArray={DataProvider.getUrlData().urls} renderRow = {(data) =>
-            <ListItem>
-              <Card>
-                <CardItem>
-                  <Left>
-                    <Thumbnail source={{uri: data.image}} />
-                    <Body>
-                      <Text>{data.url}</Text>
-                    </Body>
-                  </Left>
-                </CardItem>
-                <CardItem cardBody>
-                  <Image style={{height: 200, width: 400, alignSelf: 'stretch'}} source={{uri: data.image}}/>
-                </CardItem>
-                <CardItem content>
-                  <Text>
-                    {data.detail}
-                  </Text>
-                </CardItem>
-                <CardItem header>
-                  <Left>
-                    <Button transparent>
-                      <Icon active name="play" />
-                    </Button>
-                  </Left>
-                  <Body style={{alignItems: 'stretch'}}>
-                    <Button transparent>
-                      <Icon active name="md-create" />
-                    </Button>
-                  </Body>
-                  <Right>
-                    <Button transparent>
-                      <Icon active name="md-trash" />
-                    </Button>
-                  </Right>
-                </CardItem>
-              </Card>
-            </ListItem>
+              <LinkCard url={data.url} detail={data.content} image={data.image} key={data.key}/>
           }>
         </List>
       </Content>
