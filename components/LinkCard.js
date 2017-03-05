@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import { Container, Content, Card, CardItem, Thumbnail, logo, Header, Title,  Button, Left, Right, Body, Icon } from 'native-base';
+import { Container, ListItem, Content, Card, CardItem, Thumbnail, logo, Header, Title,  Button, Left, Right, Body, Icon } from 'native-base';
 import { Text, Image } from 'react-native';
 
 export default class LinkCard  extends Component {
@@ -13,6 +13,7 @@ export default class LinkCard  extends Component {
   }
   render() {
     return ( 
+      <ListItem>
       <Card>
         <CardItem>
           <Left>
@@ -48,6 +49,7 @@ export default class LinkCard  extends Component {
           </Right>
         </CardItem>
       </Card>
+    </ListItem>
     )
   }
 }
