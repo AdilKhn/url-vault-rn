@@ -11,9 +11,10 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  ListView
 } from 'react-native';
-import { Container,Form, Item, Input, Label, Content, Card, CardItem, Thumbnail, logo, Header, Title,  Button, Left, Right, Body, Icon } from 'native-base';
+import { Container, List,ListItem, Form, Item, Input, Label, Content, Card, CardItem, Thumbnail, logo, Header, Title,  Button, Left, Right, Body, Icon } from 'native-base';
 import LinkCard from './components/LinkCard.js';
 import UrlSearch from './components/UrlSearch.js';
 import DataProvider from './service/DataProvider.js';
@@ -24,19 +25,22 @@ export default class UrlVaultReactNative extends Component {
     let urlData = DataProvider.getUrlData();
     let cards = [ ];
     urlData.urls.forEach((item) => {
-      cards.push(<LinkCard url={item.url} detail={item.content} image={item.image} key={item.url} />)
+      cards.push(<LinkCard url={item.url} detail={item.content} image={item.image} key={item.key} />)
     });
     this.state = {
       cards: cards
     };
     this.myCb = this.myCb.bind(this);
+    this.endReached = this.endReached.bind(this);
     setUvState('searchFunction', this.myCb);
   }
 
   myCb(event) {
     console.log('it worked!:' + getUvState('searchInput'));
   }
-
+  endReached(event) {
+    console.log("End of scroll reached");
+  }
   render() {
     return (
       <Container>
@@ -53,9 +57,12 @@ export default class UrlVaultReactNative extends Component {
         </Header>
         <UrlSearch  />
         <Content>
-          {this.state.cards}
-        </Content>
-      </Container>
+          <List dataArray={DataProvider.getUrlData().urls} renderRow = {(data) =>
+              <LinkCard url={data.url} detail={data.content} image={data.image} key={data.key}/>
+          }>
+        </List>
+      </Content>
+    </Container>
     );
   }
 }
