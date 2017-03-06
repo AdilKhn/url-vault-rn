@@ -19,6 +19,9 @@ import LinkCard from './components/LinkCard.js';
 import UrlSearch from './components/UrlSearch.js';
 import DataProvider from './service/DataProvider.js';
 import {setUvState, getUvState} from './middleware/StateEngine.js';
+import  Realm   from 'realm';
+
+
 export default class UrlVaultReactNative extends Component {
   constructor(props) {
     super(props); 
@@ -42,6 +45,13 @@ export default class UrlVaultReactNative extends Component {
     console.log("End of scroll reached");
   }
   render() {
+    let realm = new Realm({
+      schema: [{name: 'Dog', properties: {name: 'string'}}]
+    });
+
+    realm.write(() => {
+      realm.create('Dog', {name: 'Thor'});
+    });
     return (
       <Container>
         <Header>
@@ -51,7 +61,7 @@ export default class UrlVaultReactNative extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Url-Vault</Title>
+            <Title>Url-Vault {realm.objects('Dog').length}</Title>
           </Body>
           <Right />
         </Header>
