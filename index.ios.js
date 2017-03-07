@@ -61,7 +61,7 @@ export default class UrlVaultReactNative extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Url-Vault {realm.objects('Dog').length}</Title>
+            <Title>Url-Vault {realm.objects('Dog')[0].name}</Title>
           </Body>
           <Right />
         </Header>
