@@ -31,18 +31,20 @@ export default class UrlVaultReactNative extends Component {
     urlData.urls.forEach((item) => {
       cards.push(<LinkCard url={item.url} detail={item.content} image={item.image} key={item.key} />)
     });
+    this.seederDb =  Seeder.initDb();
     this.state = {
-      cards: cards
+      cards: cards,
+      urlData: Seeder.getData(this.seederDb)
     };
     this.myCb = this.myCb.bind(this);
     this.endReached = this.endReached.bind(this);
     setUvState('searchFunction', this.myCb);
-    this.seederDb =  Seeder.initDb();
-    console.log(Seeder.getData(this.seederDb));
   }
 
   myCb(event) {
     console.log('it worked!:' + getUvState('searchInput'));
+    Seeder.deleteRecord(this.seederDb);
+    this.setState({urlData: Seeder.getData(this.seederDb)});
   }
   endReached(event) {
     console.log("End of scroll reached");
@@ -63,7 +65,7 @@ export default class UrlVaultReactNative extends Component {
         </Header>
         <UrlSearch  />
         <Content>
-          <List dataArray={Seeder.getData(this.seederDb)} renderRow = {(data) =>
+          <List dataArray={this.state.urlData} renderRow = {(data) =>
               <LinkCard url={data.url} detail={data.description} image={data.image} key={data.key}/>
           }>
         </List>

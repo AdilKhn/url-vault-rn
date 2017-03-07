@@ -6,6 +6,7 @@ import Realm from 'realm';
 export default class Seeder {
 
   static initDb() {
+    console.log("INIT DB");
     const UrlSchema = {
       name: 'Url',
       properties: {
@@ -31,6 +32,16 @@ export default class Seeder {
   }
 
   static getData(realm) {
+    console.log("GETTING DATA..");
     return realm.objects('Url');
+  }
+
+  static deleteRecord(realm) {
+    console.log('DELETING DATA..');
+    let urls = realm.objects('Url');
+    let first = urls[0];
+    realm.write(() => {
+      realm.delete(first);
+    });
   }
 }
