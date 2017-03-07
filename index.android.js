@@ -19,6 +19,7 @@ import LinkCard from './components/LinkCard.js';
 import UrlSearch from './components/UrlSearch.js';
 import DataProvider from './service/DataProvider.js';
 import {setUvState, getUvState} from './middleware/StateEngine.js';
+import Seeder from './middleware/Seeder.js';
 import  Realm   from 'realm';
 
 
@@ -36,6 +37,8 @@ export default class UrlVaultReactNative extends Component {
     this.myCb = this.myCb.bind(this);
     this.endReached = this.endReached.bind(this);
     setUvState('searchFunction', this.myCb);
+    this.seederDb =  Seeder.initDb();
+    console.log(Seeder.getData(this.seederDb));
   }
 
   myCb(event) {
@@ -45,13 +48,6 @@ export default class UrlVaultReactNative extends Component {
     console.log("End of scroll reached");
   }
   render() {
-    let realm = new Realm({
-      schema: [{name: 'Dog', properties: {name: 'string'}}]
-    });
-
-    realm.write(() => {
-      realm.create('Dog', {name: 'Thor'});
-    });
     return (
       <Container>
         <Header>
@@ -61,14 +57,14 @@ export default class UrlVaultReactNative extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Url-Vault {realm.objects('Dog').length}</Title>
+            <Title>Url-Vault</Title>
           </Body>
           <Right />
         </Header>
         <UrlSearch  />
         <Content>
-          <List dataArray={DataProvider.getUrlData().urls} renderRow = {(data) =>
-              <LinkCard url={data.url} detail={data.content} image={data.image} key={data.key}/>
+          <List dataArray={Seeder.getData(this.seederDb)} renderRow = {(data) =>
+              <LinkCard url={data.url} detail={data.description} image={data.image} key={data.key}/>
           }>
         </List>
       </Content>

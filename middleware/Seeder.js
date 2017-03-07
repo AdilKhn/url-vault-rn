@@ -21,16 +21,16 @@ export default class Seeder {
       if (urls){
         realm.delete(urls);
       }
-      realm.create('Url', {url: 'http://www.google.com', description: 'Straight from realm yo', image: 'http://http://cdn.androidorigin.com/wp-content/uploads/2015/09/Android-Lockscreen-Security-Exploit-Hack.png'})
-      realm.create('Url', {url: 'http://www.cnn.com', description: 'CNN Straight from realm yo', image: 'http://http://cdn.androidorigin.com/wp-content/uploads/2015/09/Android-Lockscreen-Security-Exploit-Hack.png'})
-      realm.create('Url', {url: 'http://www.yahoo.com', description: 'yahoo Straight from realm yo', image: 'http://http://cdn.androidorigin.com/wp-content/uploads/2015/09/Android-Lockscreen-Security-Exploit-Hack.png'})
-      realm.create('Url', {url: 'http://www.slashdot.com', description: 'slashdot Straight from realm yo', image: 'http://http://cdn.androidorigin.com/wp-content/uploads/2015/09/Android-Lockscreen-Security-Exploit-Hack.png'})
-      realm.create('Url', {url: 'http://www.napster.com', description: 'Napster Straight from realm yo', image: 'http://http://cdn.androidorigin.com/wp-content/uploads/2015/09/Android-Lockscreen-Security-Exploit-Hack.png'})
+      realm.create('Url', {url: 'http://www.google.com', description: 'Straight from realm yo', image: 'https://www.clker.com/cliparts/1/c/7/7/13986776161270179884cute_cat102.png'});
+      realm.create('Url', {url: 'http://www.cnn.com', description: 'CNN Straight from realm yo', image: 'https://pics.onsizzle.com/angry-kitty-my-friends-dad-found-standard-casein-sharing-1-11406826.png'});
+      realm.create('Url', {url: 'http://www.yahoo.com', description: 'yahoo Straight from realm yo', image: 'https://www.clker.com/cliparts/1/c/7/7/13986776161270179884cute_cat102.png'});
+      realm.create('Url', {url: 'http://www.slashdot.com', description: 'slashdot Straight from realm yo', image: 'https://pics.onsizzle.com/angry-kitty-my-friends-dad-found-standard-casein-sharing-1-11406826.png'});
+      realm.create('Url', {url: 'http://www.napster.com', description: 'Napster Straight from realm yo', image: 'https://www.clker.com/cliparts/1/c/7/7/13986776161270179884cute_cat102.png'});
     });
+    return realm;
   }
 
-  static getData() {
-    let realm = new Realm();
+  static getData(realm) {
     return realm.objects('Url');
   }
 }
