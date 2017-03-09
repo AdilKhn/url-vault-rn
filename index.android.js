@@ -32,9 +32,10 @@ export default class UrlVaultReactNative extends Component {
       cards.push(<LinkCard url={item.url} detail={item.content} image={item.image} key={item.key} />)
     });
     this.seederDb =  Seeder.initDb();
+    let initialRecords = Seeder.getData(this.seederDb);
     this.state = {
       cards: cards,
-      urlData: Seeder.getData(this.seederDb)
+      urlData: initialRecords 
     };
     this.myCb = this.myCb.bind(this);
     this.endReached = this.endReached.bind(this);
@@ -43,7 +44,12 @@ export default class UrlVaultReactNative extends Component {
 
   myCb(event) {
     console.log('it worked!:' + getUvState('searchInput'));
-    this.setState({urlData: Seeder.findRecord(this.seederDb, getUvState('searchInput'))});
+    this.setState({urlData: []}, () => {
+      records = Seeder.findRecord(this.seederDb, getUvState('searchInput'));
+      console.log('--records---');
+      console.log(records.length + "," + JSON.stringify(records));
+      this.setState({urlData: records});
+    });
   }
   endReached(event) {
     console.log("End of scroll reached");

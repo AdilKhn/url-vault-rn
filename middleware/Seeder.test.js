@@ -14,6 +14,13 @@ test('it deletes a record', () => {
   expect(Seeder.getData(realm).length).toBe(4);
 });
 
+test('it deletes all records', () => {
+  let realm =  Seeder.initDb();
+  expect(Seeder.getData(realm).length).toBe(5);
+  Seeder.deleteAllRecords(realm);
+  expect(Seeder.getData(realm).length).toBe(0);
+});
+
 test('it finds a record', () => {
   let realm = Seeder.initDb();
   expect(Seeder.findRecord(realm, 'goOgle').length).toBe(1);
