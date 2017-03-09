@@ -13,3 +13,9 @@ test('it deletes a record', () => {
   Seeder.deleteRecord(realm);
   expect(Seeder.getData(realm).length).toBe(4);
 });
+
+test('it finds a record', () => {
+  let realm = Seeder.initDb();
+  expect(Seeder.findRecord(realm, 'goOgle').length).toBe(1);
+  expect(Seeder.findRecord(realm, 'napSter')[0].url).toBe('http://www.napster.com');
+});

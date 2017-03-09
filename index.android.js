@@ -43,8 +43,7 @@ export default class UrlVaultReactNative extends Component {
 
   myCb(event) {
     console.log('it worked!:' + getUvState('searchInput'));
-    Seeder.deleteRecord(this.seederDb);
-    this.setState({urlData: Seeder.getData(this.seederDb)});
+    this.setState({urlData: Seeder.findRecord(this.seederDb, getUvState('searchInput'))});
   }
   endReached(event) {
     console.log("End of scroll reached");

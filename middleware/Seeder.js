@@ -44,4 +44,10 @@ export default class Seeder {
       realm.delete(first);
     });
   }
+
+  static findRecord(realm, string){
+    let urls = realm.objects('Url');
+    let found = urls.filtered(`url contains[c] "${string}"`);
+    return found;
+  };
 }
