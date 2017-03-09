@@ -19,6 +19,10 @@ import LinkCard from './components/LinkCard.js';
 import UrlSearch from './components/UrlSearch.js';
 import DataProvider from './service/DataProvider.js';
 import {setUvState, getUvState} from './middleware/StateEngine.js';
+import Seeder from './middleware/Seeder.js';
+import  Realm   from 'realm';
+
+
 export default class UrlVaultReactNative extends Component {
   constructor(props) {
     super(props); 
@@ -27,8 +31,11 @@ export default class UrlVaultReactNative extends Component {
     urlData.urls.forEach((item) => {
       cards.push(<LinkCard url={item.url} detail={item.content} image={item.image} key={item.key} />)
     });
+    this.seederDb =  Seeder.initDb();
+    let initialRecords = Seeder.getData(this.seederDb);
     this.state = {
-      cards: cards
+      cards: cards,
+      urlData: initialRecords 
     };
     this.myCb = this.myCb.bind(this);
     this.endReached = this.endReached.bind(this);
@@ -37,6 +44,12 @@ export default class UrlVaultReactNative extends Component {
 
   myCb(event) {
     console.log('it worked!:' + getUvState('searchInput'));
+    this.setState({urlData: []}, () => {
+      records = Seeder.findRecord(this.seederDb, getUvState('searchInput'));
+      console.log('--records---');
+      console.log(records.length + "," + JSON.stringify(records));
+      this.setState({urlData: records});
+    });
   }
   endReached(event) {
     console.log("End of scroll reached");
@@ -57,8 +70,8 @@ export default class UrlVaultReactNative extends Component {
         </Header>
         <UrlSearch  />
         <Content>
-          <List dataArray={DataProvider.getUrlData().urls} renderRow = {(data) =>
-              <LinkCard url={data.url} detail={data.content} image={data.image} key={data.key}/>
+          <List dataArray={this.state.urlData} renderRow = {(data) =>
+              <LinkCard url={data.url} detail={data.description} image={data.image} key={data.key}/>
           }>
         </List>
       </Content>
