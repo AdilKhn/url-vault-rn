@@ -1,11 +1,4 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  Image,
-  ListView
-} from 'react-native';
 import { Fab, View, Container, List,ListItem, Form, Item, Input, Label, Content, Card, CardItem, Thumbnail, logo, Header, Title,  Button, Left, Right, Body, Icon } from 'native-base';
 import LinkCard from './LinkCard.js';
 import UrlSearch from './UrlSearch.js';
@@ -27,6 +20,7 @@ export default class UrlVault extends Component {
   };
 
   myFab(event){
+    this.setState({ active: !this.state.active })
     console.log("FAB was clicked");
   }
   constructor(props) {
@@ -50,26 +44,21 @@ export default class UrlVault extends Component {
   render() {
     return (
       <Container>
-      <View>
         <Fab
           active={this.state.active}
           direction="up"
           style={{ backgroundColor: '#5067FF' }}
-          position="bottomRight"
-          onPress={() => this.setState({ active: !this.state.active })}
+          position="topRight"
+          onPress={() => this.myFab()}
         >
           <Icon name="share" />
-          <Button style={{ backgroundColor: '#34A34F' }}>
-            <Icon name="logo-whatsapp" />
-          </Button>
-          <Button style={{ backgroundColor: '#3B5998' }}>
-            <Icon name="logo-facebook" />
-          </Button>
-          <Button disabled style={{ backgroundColor: '#DD5144' }}>
-            <Icon name="mail" />
-          </Button>
         </Fab>
-      </View>
+        <Content>
+          <List dataArray={this.state.urlData} renderRow = {(data) =>
+            <LinkCard url={data.url} detail={data.description} image={data.image} key={data.key}/>
+          }>
+        </List>
+      </Content>
     </Container>
     )
   }
