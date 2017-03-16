@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { Fab, View, Container, List,ListItem, Form, Item, Input, Label, Content, Card, CardItem, Thumbnail, logo, Header, Title,  Button, Left, Right, Body, Icon } from 'native-base';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ListView
+} from 'react-native';
+import {Fab, Container, List,ListItem, Form, Item, Input, Label, Content, Card, CardItem, Thumbnail, logo, Header, Title,  Button, Left, Right, Body, Icon } from 'native-base';
 import LinkCard from './LinkCard.js';
 import UrlSearch from './UrlSearch.js';
 import DataProvider from '../service/DataProvider.js';
@@ -17,11 +25,9 @@ export default class UrlVault extends Component {
       console.log(records.length + "," + JSON.stringify(records));
       this.setState({urlData: records});
     });
-  };
-
-  myFab(event){
-    this.setState({ active: !this.state.active })
-    console.log("FAB was clicked");
+  }
+  myFab(){
+    console.log('fabulous!');
   }
   constructor(props) {
     super(props); 
@@ -34,31 +40,41 @@ export default class UrlVault extends Component {
     let initialRecords = Seeder.getData(this.seederDb);
     this.state = {
       cards: cards,
-      urlData: initialRecords,
-      active: true
+      urlData: initialRecords 
     };
     this.myCb = this.myCb.bind(this);
-    this.myFab = this.myFab.bind(this);
     setUvState('searchFunction', this.myCb);
   }
   render() {
     return (
       <Container>
-        <Fab
-          active={this.state.active}
-          direction="up"
-          style={{ backgroundColor: '#5067FF' }}
-          position="topRight"
-          onPress={() => this.myFab()}
-        >
-          <Icon name="share" />
-        </Fab>
+        <Header>
+          <Left>
+            <Button transparent>
+              <Icon name='menu' />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Url-Vault</Title>
+          </Body>
+          <Right />
+        </Header>
+        <UrlSearch  />
         <Content>
           <List dataArray={this.state.urlData} renderRow = {(data) =>
             <LinkCard url={data.url} detail={data.description} image={data.image} key={data.key}/>
           }>
         </List>
       </Content>
+        <Fab
+          active={this.state.active}
+          direction="up"
+          style={{ backgroundColor: '#5067FF' }}
+          position="bottomRight"
+          onPress={() => this.myFab()}
+        >
+          <Icon name="add" />
+        </Fab>
     </Container>
     )
   }
