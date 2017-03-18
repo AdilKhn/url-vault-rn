@@ -28,11 +28,11 @@ export default class UrlSearch  extends Component {
               onSubmitEditing={this.editHandler}
               onChangeText={(input) => this.setState({searchText: input})}
             />
+            <Button style={{height: 50}}>
+              <Icon name="add"/>
+            </Button>
           </Item>
         </Form>
-        <Button style={{width: 60, height: 60}}>
-          <Icon name="add"/>
-        </Button>
       </View>
     )
   }

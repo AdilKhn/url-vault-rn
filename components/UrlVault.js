@@ -26,9 +26,6 @@ export default class UrlVault extends Component {
       this.setState({urlData: records});
     });
   }
-  myFab(){
-    console.log('fabulous!');
-  }
   constructor(props) {
     super(props); 
     let urlData = DataProvider.getUrlData();
@@ -66,15 +63,6 @@ export default class UrlVault extends Component {
           }>
         </List>
       </Content>
-        <Fab
-          active={this.state.active}
-          direction="up"
-          style={{ backgroundColor: '#5067FF' }}
-          position="bottomRight"
-          onPress={() => this.myFab()}
-        >
-          <Icon name="add" />
-        </Fab>
     </Container>
     )
   }
