@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import { Form, Item, Label, Input, Button, Grid, Col } from 'native-base';
+import { Form, Item, Label, Input, Icon, Button, Grid, Col } from 'native-base';
 import { View, Text, Image } from 'react-native';
 import {setUvState, getUvState} from '../middleware/StateEngine.js';
 export default class UrlSearch  extends Component {
@@ -19,17 +19,19 @@ export default class UrlSearch  extends Component {
   render() {
     return ( 
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <Form style={{flex: 4}}>
-          <Item floatingLabel style={{backgroundColor: '#8293af',marginLeft: 10}} >
-            <Label> Search </Label>
+        <Form style={{backgroundColor: '#a7c3f2',flex: 3}}>
+          <Item>
+            <Label>
+              <Icon name="search" style={{color:'blue'}}/> 
+            </Label>
             <Input 
               onSubmitEditing={this.editHandler}
               onChangeText={(input) => this.setState({searchText: input})}
             />
           </Item>
         </Form>
-        <Button style={{flex: 1}}>
-          <Text>DO</Text>
+        <Button style={{width: 60, height: 60}}>
+          <Icon name="add"/>
         </Button>
       </View>
     )
