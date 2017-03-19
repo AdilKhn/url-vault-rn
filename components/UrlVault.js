@@ -26,6 +26,9 @@ export default class UrlVault extends Component {
       this.setState({urlData: records});
     });
   }
+  myFab(){
+    console.log('fabulous!');
+  }
   constructor(props) {
     super(props); 
     let urlData = DataProvider.getUrlData();
@@ -46,11 +49,11 @@ export default class UrlVault extends Component {
     return (
       <Container>
         <Header>
-          <Left>
+          {/*<Left>
             <Button transparent>
               <Icon name='menu' />
             </Button>
-          </Left>
+          </Left> */}
           <Body>
             <Title>Url-Vault</Title>
           </Body>
