@@ -3,6 +3,7 @@ import { Form, Item, Label, Input, Icon, Button, Grid, Col } from 'native-base';
 import { View, Text, Image } from 'react-native';
 import {setUvState, getUvState} from '../middleware/StateEngine.js';
 import DataProvider from '../service/DataProvider.js';
+import HtmlParser from '../service/HtmlParser.js';
 
 export default class UrlSearch  extends Component {
   constructor(props){
@@ -23,7 +24,9 @@ export default class UrlSearch  extends Component {
       console.log("Calling ADD for: " + this.state.searchText);
       DataProvider.getNetworkData(this.state.searchText, function(body) {
           console.log("returned from network");
-          console.log(body);
+          console.log(HtmlParser.getTitle(body));
+          console.log(HtmlParser.getDescription(body));
+          console.log(HtmlParser.getImageSrc(body));
       })
   }
   render() {

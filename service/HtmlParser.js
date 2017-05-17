@@ -1,4 +1,4 @@
-import cheerio from 'cheerio';
+import cheerio from 'cheerio-without-node-native';
 export default class HtmlParser {
 
   static getTitle(html){

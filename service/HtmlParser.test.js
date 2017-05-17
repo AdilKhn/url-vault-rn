@@ -11,7 +11,6 @@ test('Gets the description meta tag value', () => {
 
 test('Gets the first image in the page', () => {
   let html = '<html><head></head><body><div><img src="./assets/doggy.jpg"><p><img src="./assets/foo.jpg"></p></body></html>';
-
   expect(HtmlParser.getImageSrc(html)).toBe('./assets/doggy.jpg');
 });
 
