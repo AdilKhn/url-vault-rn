@@ -1,7 +1,7 @@
 export default class DataProvider {
 
   static getUrlData(val) {
-    let count = 10;
+  let count = 10;
 
     let data = {
       urls: [
@@ -21,4 +21,18 @@ export default class DataProvider {
     return data;
   }
 
+static getNetworkData(url,callback){
+  console.log("GET'ing: " + url) 
+  fetch(url, {
+         method: 'get' 
+   }).then(function(response) {
+     return response.text();
+   }).then(function(response){
+      callback(response);
+   }).catch(function(error){
+      console.log('error!');
+      console.log(error);
+      callback();
+    })
+  }
 }
