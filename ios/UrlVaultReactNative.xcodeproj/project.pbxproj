@@ -83,6 +83,7 @@
 		F806AA8CF0904D629AEF39CF /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B909F83814AF795B4AF47 /* libRealmReact.a */; };
 		EECED140683C48BC886B0448 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7922D74782864BDC8420F805 /* libc++.tbd */; };
 		1C9DC0EB2690421C96C1DF1A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 384FEE85A23E4979A4CFE574 /* libz.tbd */; };
+		069C1BECC3AB474D90BF9E4D /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18846AC3B1814AEBA46FC615 /* SimpleLineIcons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -359,6 +360,7 @@
 		573B909F83814AF795B4AF47 /* libRealmReact.a */ = {isa = PBXFileReference; name = "libRealmReact.a"; path = "libRealmReact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		7922D74782864BDC8420F805 /* libc++.tbd */ = {isa = PBXFileReference; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 		384FEE85A23E4979A4CFE574 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		18846AC3B1814AEBA46FC615 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -650,6 +652,7 @@
 				E1C38764DB5D43499D5DD7FA /* Skia.ttf */,
 				8180D3FC09AF44339FD082BD /* Times New Roman.ttf */,
 				9F37E577B5AA44E8B1BF5E5C /* Zocial.ttf */,
+				18846AC3B1814AEBA46FC615 /* SimpleLineIcons.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1081,6 +1084,7 @@
 				2CDEE39CE0614BEC8270183C /* Skia.ttf in Resources */,
 				67A58115682D4CD5A8B42E10 /* Times New Roman.ttf in Resources */,
 				1CADA8E071274FC2AD52C570 /* Zocial.ttf in Resources */,
+				069C1BECC3AB474D90BF9E4D /* SimpleLineIcons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

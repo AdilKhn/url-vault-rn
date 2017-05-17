@@ -55,4 +55,4 @@ fastlane/screenshots
 
 default.realm*
 default.realm.*
-realm.object.server/*
+realm.object.server/**
