@@ -4,6 +4,7 @@ import { View, Text, Image } from 'react-native';
 import {setUvState, getUvState} from '../middleware/StateEngine.js';
 import DataProvider from '../service/DataProvider.js';
 import HtmlParser from '../service/HtmlParser.js';
+import PouchDB from 'pouchdb-react-native';
 
 export default class UrlSearch  extends Component {
   constructor(props){
@@ -13,6 +14,21 @@ export default class UrlSearch  extends Component {
     }
     this.editHandler = this.editHandler.bind(this);
     this.addUrl = this.addUrl.bind(this);
+
+
+    const localDb = new PouchDB('url-vault');
+    const remoteDb = new PouchDB('http://192.168.1.14:5984/url-vault');
+    localDb.put({
+      "_id": localDb.get('uuid'),
+      "url": "url-foo",
+      "summary": "react summary",
+      "image": "link to image"
+    });
+    localDb.sync(remoteDb).on('complete', function () {
+        console.log("sync done");
+       }).on('error', function (err) {
+        console.log('error occured: ' + err);
+        });
   }
 
   editHandler(event) {

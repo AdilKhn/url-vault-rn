@@ -10,6 +10,7 @@
   "dependencies": {
     "cheerio-without-node-native": "^0.20.2",
     "native-base": "^2.0.7",
+    "pouchdb-react-native": "^6.2.3",
     "react": "15.4.2",
     "react-native": "0.41.2",
     "realm": "^1.0.2"
