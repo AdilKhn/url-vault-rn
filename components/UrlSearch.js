@@ -5,7 +5,7 @@ import {setUvState, getUvState} from '../middleware/StateEngine.js';
 import DataProvider from '../service/DataProvider.js';
 import HtmlParser from '../service/HtmlParser.js';
 import PouchDB from 'pouchdb-react-native';
-
+import uuidV4 from 'uuid/v4';
 export default class UrlSearch  extends Component {
   constructor(props){
     super(props);
@@ -19,7 +19,7 @@ export default class UrlSearch  extends Component {
     const localDb = new PouchDB('url-vault');
     const remoteDb = new PouchDB('http://192.168.1.14:5984/url-vault');
     localDb.put({
-      "_id": localDb.get('uuid'),
+      "_id": uuidV4(),
       "url": "url-foo",
       "summary": "react summary",
       "image": "link to image"
