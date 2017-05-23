@@ -1,5 +1,4 @@
-import React, { Component } from 'react'; 
-import { Form, Item, Label, Input, Icon, Button, Grid, Col } from 'native-base';
+import React, { Component } from 'react'; import { Form, Item, Label, Input, Icon, Button, Grid, Col } from 'native-base';
 import { View, Text, Image } from 'react-native';
 import {setUvState, getUvState} from '../middleware/StateEngine.js';
 import DataProvider from '../service/DataProvider.js';
@@ -17,12 +16,14 @@ export default class UrlSearch  extends Component {
 
 
     const localDb = new PouchDB('url-vault');
-    const remoteDb = new PouchDB('http://192.168.1.14:5984/url-vault');
+    const remoteDb = new PouchDB('http://localhost:5984/url-vault');
     localDb.put({
       "_id": uuidV4(),
+      "user": "homer@simpsons.com",
       "url": "url-foo",
       "summary": "react summary",
-      "image": "link to image"
+      "image": "link to image",
+      "shared_with": ["marge@simpsons.com","peter@familyguy.com"]
     });
     localDb.sync(remoteDb).on('complete', function () {
         console.log("sync done");
